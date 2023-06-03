@@ -1,0 +1,25 @@
+- testinf...?
+- for windows, do type > filename.type 
+    - this will bring up cmdlet and ask for paths, not sure how to get rid of it
+- git clone [url] clones the repository
+- git add <filename> allows you to continue adding the files
+- git commit -m "message" 
+    - don't forget the message, it's how you'll remember whichj version is which 
+- git status : allows you to see where your repository is vs the one on the web
+- git push: the changes get pushed up to github
+- git commit -am "message"
+    - adds/saves and commits at the same time
+- git pull
+    - takes new changes from the web
+- merge conflicts: will show you the conflicting information. use your intuition to make sure the information is correct
+- git log: shows commits and the things behind it
+- git reset --hard <commit that youy want to revert to>
+- git reset --hard origin/master
+    - resets to what's on the server
+- branching: lets you use multiple parts of the code at once
+    - you can then merge the branches together
+    - git branch : tells you which branch you're on
+    - git checkout -b nameofbranch : lets you create and name a new branch
+    - git checkout nameofbranch: switch to another branch
+    - git merge nameofbranch : merges the current branch and nameofbranch
+- fork : allows you to make a copy of an already existing repository so you can 
