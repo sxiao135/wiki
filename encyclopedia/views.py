@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django import forms
 from django.template import RequestContext
 from . import util
+from django import redirect
 
 
 def index(request):
@@ -28,3 +29,21 @@ class AddPageForm(forms.Form):
             "class": "form-control",
         })
     )
+
+def add_page(request):
+    if request.method == "POST":
+        form = AddPageForm(request.POST)
+        
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            content = form.cleaned_data['content']
+            entries = util.list_entries()
+            for entry in entries:
+                if title.upper() == entry.upper():
+                    return render(request, "encyclopedia/errorpage.html")
+            util.save_entry(title, content)
+            return redirect('encyclopedia:entrypage', title=title)
+    else:
+        return render(request, "encyclopedia/addpage.html", {
+            "form": AddPageForm()
+        })
