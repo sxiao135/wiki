@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.shortcuts import render_to_response
+from django import forms
 from django.template import RequestContext
 from . import util
 
@@ -10,7 +10,7 @@ def index(request):
     })
 
 def handler404(request, *args, **argv):
-    response = render_to_response('404.html', {}, context_instance=RequestContext(request))
+    response = request('404.html', {}, context_instance=RequestContext(request))
     response.status_code = 404
     return response
 
@@ -21,3 +21,10 @@ def handler404(request, *args, **argv):
 #     return response
 # this is the catch all error
 
+class AddPageForm(forms.Form):
+    title = forms.CharField()
+    content = forms.CharField(widget=forms.Textarea(
+        attrs={
+            "class": "form-control",
+        })
+    )
